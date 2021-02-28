@@ -10,15 +10,12 @@ import os
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
+#It loads data from the COCO Localized Narratives dataset
 def load_data():
     rand_number = randint(1,2400)
     print(rand_number)
 
-    #The solution for this error is to keep another tab opened, to close the terminal and click Run again.
-    #https://www.pythonanywhere.com/forums/topic/26966/
-
     json_file_str =""
-    #Solution for not loading huge jsonl files and access a line directly: https://stackoverflow.com/questions/44501130/get-path-relative-to-executed-flask-app
     with  app.open_resource('2400_coco_val_localized_narratives_1.jsonl') as lines:
         for line in islice(lines, rand_number-1, rand_number):
             #print(line)
